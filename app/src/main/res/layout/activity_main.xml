@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imgv_logo"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -38,14 +38,78 @@
             android:textStyle="bold">
         </TextView>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_menu"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:backgroundTint="@color/light_grey"
-            app:cornerRadius="50dp"/>
+            android:icon="@mipmap/ic_menu"
+            android:roundIcon="@mipmap/ic_menu_round" />
 
     </LinearLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupFiltros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toBottomOf="parent"
+        tools:layout_editor_absoluteY="79dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipEstudios"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Estudios"
+            android:textColor="@color/chip_texto_selector"
+            app:chipBackgroundColor="@color/chip_selector"
+            app:chipIconTint="@color/light_blue" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPersonal"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Personal"
+            android:textColor="@color/chip_texto_selector"
+            app:chipBackgroundColor="@color/chip_selector"
+            app:chipIconTint="@color/light_blue" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTrabajo"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Trabajo"
+            android:textColor="@color/chip_texto_selector"
+            app:chipBackgroundColor="@color/chip_selector"
+            app:chipIconTint="@color/light_blue" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipOtros"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Otros"
+            android:textColor="@color/chip_texto_selector"
+            app:chipBackgroundColor="@color/chip_selector"
+            app:chipIconTint="@color/light_blue" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/txt_total"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:text="Total"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/chipGroupFiltros"
+        app:layout_constraintEnd_toEndOf="@id/chipGroupFiltros" />
 
     <Button
         android:id="@+id/btn_añadir"
@@ -66,6 +130,6 @@
         android:id="@+id/lstv_tareas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/lyt_encabezado"/>
+        android:layout_marginTop="160dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
