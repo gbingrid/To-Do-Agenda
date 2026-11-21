@@ -2,134 +2,111 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/contenedor_principal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/light_grey"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/lyt_encabezado"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:gravity="top"
-        android:background="@color/dark_blue"
+        android:gravity="center_vertical"
+        android:background="@color/navy_blue"
         android:padding="5dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
-        <ImageButton
-            android:id="@+id/imgv_logo"
+        <Button
+            android:id="@+id/btn_logo"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginRight="12dp"
-            android:background="@color/light_grey"/>
+            android:layout_marginEnd="12dp"
+            android:background="@color/transparent"
+            app:icon="@drawable/ic_logotodo"
+            app:iconGravity="textStart"
+            app:iconSize="48dp"
+            app:iconPadding="0dp" />
 
         <TextView
-            android:id="@+id/txt_AppName"
-            android:layout_width="270dp"
+            android:id="@+id/txt_app_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_gravity="center"
-            android:text="To-Do Agenda"
+            android:text="@string/txt_app_name"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold">
         </TextView>
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_menu"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:icon="@mipmap/ic_menu"
-            android:roundIcon="@mipmap/ic_menu_round" />
+            android:layout_marginStart="12dp"
+            android:background="@color/transparent"
+            app:icon="@drawable/ic_menu"
+            app:iconGravity="textStart"
+            app:iconSize="40dp"
+            app:iconPadding="0dp" />
 
     </LinearLayout>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroupFiltros"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toBottomOf="parent"
-        tools:layout_editor_absoluteY="79dp">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipEstudios"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="true"
-            android:text="Estudios"
-            android:textColor="@color/chip_texto_selector"
-            app:chipBackgroundColor="@color/chip_selector"
-            app:chipIconTint="@color/light_blue" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipPersonal"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="true"
-            android:text="Personal"
-            android:textColor="@color/chip_texto_selector"
-            app:chipBackgroundColor="@color/chip_selector"
-            app:chipIconTint="@color/light_blue" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipTrabajo"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="true"
-            android:text="Trabajo"
-            android:textColor="@color/chip_texto_selector"
-            app:chipBackgroundColor="@color/chip_selector"
-            app:chipIconTint="@color/light_blue" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipOtros"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="true"
-            android:text="Otros"
-            android:textColor="@color/chip_texto_selector"
-            app:chipBackgroundColor="@color/chip_selector"
-            app:chipIconTint="@color/light_blue" />
-
-    </com.google.android.material.chip.ChipGroup>
-
     <TextView
         android:id="@+id/txt_total"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:text="Total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/txt_total"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/chipGroupFiltros"
-        app:layout_constraintEnd_toEndOf="@id/chipGroupFiltros" />
+        android:textColor="@color/dark_grey"
+        app:layout_constraintTop_toBottomOf="@id/lyt_encabezado"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/lyt_contenedor_lista"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/txt_total"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <ListView
+            android:id="@+id/lstv_tareas"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="90dp" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btn_añadir"
+        android:id="@+id/btn_agregar"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="632dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/light_grey"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/lstv_tareas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="160dp"/>
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/transparent"
+        app:icon="@drawable/ic_agregar"
+        app:iconGravity="textStart"
+        app:iconSize="45dp"
+        app:iconPadding="0dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

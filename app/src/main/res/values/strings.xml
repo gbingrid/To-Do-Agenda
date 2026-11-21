@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">To Do Agenda</string>
+    <string name="txt_total">Total</string>
+    <string name="txt_app_name">To-Do Agenda</string>
+    <string name="txt_fecha">12/09/2024</string>
+    <string name="txt_tarea">Realizar proyecto final</string>
+    <string name="txt_titulo">Crear nueva tarea</string>
+    <string name="etxt_titulo">Introduce un título ...</string>
+    <string name="txt_descripcion">Descripción (opcional)</string>
+    <string name="etxt_descripcion">Introduce una descripción breve ...</string>
+    <string name="txt_categoria">Categoría *</string>
+    <string name="etxt_categoria">Selecciona una opción</string>
+    <string name="txt_titulo_tarea">Título *</string>
+    <string name="etxt_fecha">DD/MM/AAAA</string>
+    <string name="etxt_hora">HH:mm:ss</string>
+    <string name="txt_titulo_fecha">Fecha</string>
+    <string name="txt_titulo_hora">Hora *</string>
+    <string name="txt_aceptar">Aceptar</string>
+    <string-array name="categorias">
+        <item>Estudio</item>
+        <item>Trabajo</item>
+        <item>Personal</item>
+        <item>Otros</item>
+    </string-array>
 </resources>
