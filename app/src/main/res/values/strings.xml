@@ -13,7 +13,7 @@
     <string name="txt_titulo_tarea">Título *</string>
     <string name="etxt_fecha">DD/MM/AAAA</string>
     <string name="etxt_hora">HH:mm:ss</string>
-    <string name="txt_titulo_fecha">Fecha</string>
+    <string name="txt_titulo_fecha">Fecha *</string>
     <string name="txt_titulo_hora">Hora *</string>
     <string name="txt_aceptar">Aceptar</string>
     <string-array name="categorias">

@@ -2,20 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contenedor_principal"
+    android:id="@+id/lyt_contenedor_principal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_grey"
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/lyt_encabezado"
+        android:id="@+id/lyt_contenedor_encabezado"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:gravity="center_vertical"
-        android:background="@color/navy_blue"
         android:padding="5dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:background="@color/navy_blue"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
@@ -49,7 +49,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="12dp"
             android:background="@color/transparent"
-            app:icon="@drawable/ic_menu"
+            app:icon="@drawable/ic_salir"
             app:iconGravity="textStart"
             app:iconSize="40dp"
             app:iconPadding="0dp" />
@@ -60,14 +60,13 @@
         android:id="@+id/txt_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
         android:text="@string/txt_total"
         android:textSize="20sp"
         android:textColor="@color/dark_grey"
-        app:layout_constraintTop_toBottomOf="@id/lyt_encabezado"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/lyt_contenedor_encabezado"
+       app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/lyt_contenedor_lista"
@@ -93,6 +92,21 @@
             android:paddingBottom="90dp" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_menu"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/transparent"
+        app:icon="@drawable/ic_menu"
+        app:iconGravity="textStart"
+        app:iconSize="45dp"
+        app:iconPadding="0dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toTopOf="@id/btn_agregar"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/btn_agregar"

@@ -29,5 +29,11 @@ public class Coleccion {
         return listaFiltrada;
     }
 
+    // Método que se ejecuta una sola vez para añadir tareas predeterminadas.
+    public static void agregarTareasPorDefecto(){
+        listaCompleta.add(new Tarea("Realizar proyecto final", null, "Estudio", "12/12/2026", "14:00"));
+        listaCompleta.add(new Tarea("Preparar presentación", "Diseñar las diapositivas", "Trabajo", "14/12/2026", "10:00"));
+    }
+
 
 }
