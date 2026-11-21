@@ -9,7 +9,6 @@
         android:id="@+id/txt_titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_tarea"
         android:textSize="24sp" />
 
     <TextView
@@ -17,6 +16,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
-        android:text="@string/txt_fecha"
         android:textSize="18sp" />
 </LinearLayout>
