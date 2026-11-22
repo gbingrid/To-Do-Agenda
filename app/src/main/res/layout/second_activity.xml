@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent" >
 
         <TextView
-            android:id="@+id/txt_app_name"
+            android:id="@+id/txt_titulo_formulario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -34,7 +34,7 @@
         </TextView>
 
         <Button
-            android:id="@+id/btn_menu"
+            android:id="@+id/btn_volver"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="12dp"
@@ -204,12 +204,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_aceptar"
+        android:id="@+id/btn_guardar"
         android:layout_width="110dp"
         android:layout_height="45dp"
         android:layout_marginStart="85dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/txt_aceptar"
+        android:text="@string/txt_guardar"
         android:textColor="@color/white"
         android:backgroundTint="@color/navy_blue"
         app:layout_constraintBottom_toBottomOf="parent"

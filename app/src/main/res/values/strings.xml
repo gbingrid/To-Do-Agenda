@@ -15,7 +15,7 @@
     <string name="etxt_hora">HH:mm:ss</string>
     <string name="txt_titulo_fecha">Fecha *</string>
     <string name="txt_titulo_hora">Hora *</string>
-    <string name="txt_aceptar">Aceptar</string>
+    <string name="txt_guardar">Guardar</string>
     <string-array name="categorias">
         <item>Estudio</item>
         <item>Trabajo</item>

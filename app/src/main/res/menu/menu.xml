@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/opc_categorias"
+        android:title="Categorías"
+        app:showAsAction="never" >
+        <menu>
+            <item android:id="@+id/estudios" android:title="Estudios" />
+            <item android:id="@+id/trabajo" android:title="Trabajo" />
+            <item android:id="@+id/personal" android:title="Personal" />
+            <item android:id="@+id/otros" android:title="Otros" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/opc_vaciar"
+        android:title="Vaciar agenda"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/opc_acercade"
+        android:title="Acerca de"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/opc_salir"
+        android:title="Salir"
+        app:showAsAction="never" />
+</menu>

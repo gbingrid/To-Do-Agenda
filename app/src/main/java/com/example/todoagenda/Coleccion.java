@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Coleccion {
     private static final ArrayList<Tarea> listaCompleta = new ArrayList<>();
 
+    private static final String[] CATEGORIAS = {"Estudios", "Trabajo", "Personal", "Otros"};
+
     // Método que agrega todas las tareas a la lista.
     public static void agregarTarea(Tarea tarea){
         listaCompleta.add(tarea);
@@ -31,8 +33,18 @@ public class Coleccion {
 
     // Método que se ejecuta una sola vez para añadir tareas predeterminadas.
     public static void agregarTareasPorDefecto(){
-        listaCompleta.add(new Tarea("Realizar proyecto final", null, "Estudio", "12/12/2026", "14:00"));
+        listaCompleta.add(new Tarea("Realizar proyecto final", "", "Estudio", "12/12/2026", "14:00"));
         listaCompleta.add(new Tarea("Preparar presentación", "Diseñar las diapositivas", "Trabajo", "14/12/2026", "10:00"));
+    }
+
+    /* Método para eliminar tarea registrada. */
+    public static void eliminarTarea(Tarea tarea){
+        listaCompleta.remove(tarea);
+    }
+
+    /* Método para eliminar todas las tareas registradas. */
+    public static void vaciarAgenda() {
+        listaCompleta.clear();
     }
 
 
