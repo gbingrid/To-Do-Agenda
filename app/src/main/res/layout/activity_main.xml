@@ -25,14 +25,14 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_logo"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:scaleType="fitCenter"
                 android:background="@color/transparent"
-                android:layout_gravity="start"
                 android:src="@drawable/ic_logotodo"
-                />
+                app:tint="@color/white"/>
 
             <TextView
                 android:id="@+id/txt_titulo"
@@ -88,7 +88,9 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:clipToPadding="false"
-            android:paddingBottom="90dp" />
+            android:paddingBottom="90dp"
+            android:divider="@color/transparent"
+            android:dividerHeight="8dp" />
 
     </LinearLayout>
 

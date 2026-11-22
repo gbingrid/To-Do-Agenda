@@ -12,26 +12,25 @@
         android:id="@+id/lyt_encabezado"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:gravity="center_vertical"
         android:background="@color/navy_blue"
-        android:padding="5dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txt_titulo_formulario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="15dp"
             android:layout_weight="1"
-            android:layout_gravity="center"
             android:text="@string/txt_titulo"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:textStyle="bold">
-        </TextView>
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_volver"
@@ -41,8 +40,8 @@
             android:background="@color/transparent"
             app:icon="@drawable/ic_salir"
             app:iconGravity="textStart"
-            app:iconSize="40dp"
-            app:iconPadding="0dp" />
+            app:iconPadding="0dp"
+            app:iconSize="40dp" />
 
     </LinearLayout>
 
@@ -50,25 +49,25 @@
         android:id="@+id/lyt_formulario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="12dp"
         android:background="@color/light_grey"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/lyt_encabezado"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/lyt_encabezado">
 
         <TextView
             android:id="@+id/txt_titulo"
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:text="@string/txt_titulo_tarea"
+            android:textColor="@color/black"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etxt_titulo"
@@ -82,41 +81,17 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/txt_descripcion"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/txt_descripcion"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-
-        <EditText
-            android:id="@+id/etxt_descripcion"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="15dp"
-            android:background="@color/white"
-            android:hint="@string/etxt_descripcion"
-            android:textSize="20sp" />
-
-        <TextView
             android:id="@+id/txt_categoria"
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:text="@string/txt_categoria"
+            android:textColor="@color/black"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/etxt_categoria"
@@ -125,81 +100,57 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="15dp"
-            android:background="@color/white"/>
+            android:background="@color/white" />
 
 
-        <LinearLayout
-            android:id="@+id/lyt_contenedor_calendario"
+        <TextView
+            android:id="@+id/txt_fecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:orientation="horizontal" >
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/txt_tit_fecha"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical" >
+        <EditText
+            android:id="@+id/etxt_fecha"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/white"
+            android:hint="@string/etxt_fecha"
+            android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txt_fecha"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Fecha *"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black" />
 
-                <EditText
-                    android:id="@+id/etxt_fecha"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@color/white"
-                    android:hint="@string/etxt_fecha"
-                    android:textSize="20sp" />
+        <TextView
+            android:id="@+id/txt_hora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/txt_titulo_hora"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-            </LinearLayout>
+        <EditText
+            android:id="@+id/etxt_hora"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@color/white"
+            android:hint="@string/etxt_hora"
+            android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/txt_hora"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/txt_titulo_hora"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:id="@+id/etxt_hora"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@color/white"
-                    android:hint="@string/etxt_hora"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -209,9 +160,9 @@
         android:layout_height="45dp"
         android:layout_marginStart="85dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/navy_blue"
         android:text="@string/txt_guardar"
         android:textColor="@color/white"
-        android:backgroundTint="@color/navy_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -221,9 +172,9 @@
         android:layout_height="45dp"
         android:layout_marginEnd="85dp"
         android:layout_marginBottom="20dp"
-        android:text="Cancelar"
-        android:textColor="@color/white"
         android:backgroundTint="@color/navy_blue"
+        android:text="@string/txt_btn_cancelar"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

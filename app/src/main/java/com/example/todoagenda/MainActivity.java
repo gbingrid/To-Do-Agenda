@@ -10,8 +10,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
@@ -126,7 +130,26 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onCreateOptionsMenu (Menu menu){
             getMenuInflater().inflate(R.menu.menu, menu);
+
+            for (int i =0; i < menu.size(); i++) {
+                MenuItem opcion = menu.getItem(i);
+                pintarTexto(opcion);
+
+                if (opcion.hasSubMenu()) {
+                    SubMenu submenu = opcion.getSubMenu();
+                    for (int j = 0; j < submenu.size(); j++) {
+                        pintarTexto(submenu.getItem(j));
+                    }
+                }
+            }
             return true;
+        }
+
+        /* Método para cambiar el color del texto del menú. */
+        private void pintarTexto(MenuItem opcion) {
+            SpannableString texto = new SpannableString(opcion.getTitle());
+            texto.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this, R.color.black)), 0, texto.length(), 0);
+            opcion.setTitle(texto);
         }
 
         @Override
@@ -241,7 +264,6 @@ public class MainActivity extends AppCompatActivity {
             adaptador.notifyDataSetChanged();
             txtvTotal.setText("Total: " + listaCompleta.size());
         }
-
 
         // --------------
         @Override

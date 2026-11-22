@@ -18,6 +18,8 @@
     <string name="txt_guardar">Guardar</string>
     <string name="txt_titulo_total">Total (0)</string>
     <string name="txt_agenda_vacia">Agenda vacía</string>
+    <string name="txt_btn_cancelar">Cancelar</string>
+    <string name="txt_tit_fecha">Fecha *</string>
     <string-array name="categorias">
         <item>Estudio</item>
         <item>Trabajo</item>

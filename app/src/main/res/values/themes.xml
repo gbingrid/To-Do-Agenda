@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.ToDoAgenda" parent="Base.Theme.ToDoAgenda" />
+    <style name="Tema.MenuPopup" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorOnSurface">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
 </resources>

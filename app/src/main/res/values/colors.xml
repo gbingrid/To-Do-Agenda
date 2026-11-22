@@ -16,6 +16,9 @@
     <color name="sapphire_blue">#00397D</color>
     <color name="ice_blue">#B0CEE2</color>
 
-    <color name="orange">#f79202</color>
-    <color name="light_orange">#de7138</color>
+    <color name="orange">#F79202</color>
+    <color name="light_orange">#F7D2B2</color>
+
+    <color name="light_green">#EEF6E8</color>
+    <color name="green">#BFDAA9</color>
 </resources>

@@ -2,13 +2,16 @@ package com.example.todoagenda;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class SecondActivity extends AppCompatActivity {
-    private Button btnSalir;
+    private Button btnSalir, btnGuardar, btnCancelar;
+    private EditText edt_titulo, edt_fecha, edt_hora;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -33,7 +33,7 @@ public class Coleccion {
 
     // Método que se ejecuta una sola vez para añadir tareas predeterminadas.
     public static void agregarTareasPorDefecto(){
-        if (!porDefectoCargadas) {
+        if (porDefectoCargadas) {
             return;
         }
 
