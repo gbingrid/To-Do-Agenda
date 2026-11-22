@@ -3,7 +3,6 @@ package com.example.todoagenda;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 
 
@@ -41,13 +39,30 @@ public class SecondActivity extends AppCompatActivity {
         edtCategoria.setOnClickListener(v -> mostrarDialogoCategoria());
         edtFecha.setOnClickListener(v -> seleccionarFecha());
         edtHora.setOnClickListener(v -> seleccionarHora());
-
+        btnGuardar.setOnClickListener(v -> guardarTarea());
+        btnCancelar.setOnClickListener(v -> finish());
 
         // Configuración del botón para volver a la pantalla anterior.
         btnVolver.setOnClickListener(v -> finish());
     }
 
+    /* Método para crear un objeto Tarea y guardarlo en la lista. */
+    private void guardarTarea(){
+        String titulo = edtTitulo.getText().toString().trim();
+        String categoria = edtCategoria.getText().toString().trim();
+        String fecha = edtFecha.getText().toString().trim();
+        String hora = edtHora.getText().toString().trim();
 
+        if (titulo.isEmpty() || categoria.isEmpty() || fecha.isEmpty() || hora.isEmpty()){
+            Toast.makeText(this, "Hay campos obligatorios vacíos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Crear objeto y agregarlo a la lista.
+        Coleccion.agregarTarea(new Tarea(titulo, categoria, fecha, hora));
+        Toast.makeText(this, "Tarea agregada exitosamente.", Toast.LENGTH_SHORT).show();
+        return;
+    }
 
     /* Método que muestra el diálogo para seleccionar la categoría y guarda la selección en el campo. */
     private void mostrarDialogoCategoria(){
