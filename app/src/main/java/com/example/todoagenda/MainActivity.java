@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String CHANNEL_ID = "Canal_ID";
     private static final String DESCRIPCION = "Recordatorio";
     private static final int REQUEST_NOTIFICATION_PERMISSION = 101;
+    private final ArrayList<Tarea> listaMostrada = new ArrayList<>();
     private NotificationManager notificador;
     private Toolbar toolbar;
     private Button btnAgregar;
@@ -43,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private ListView lstvTareas;
     private Adaptador adaptador;
     private Tarea tareaSeleccionada;
-    private final ArrayList<Tarea> listaCompleta = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        adaptador = new Adaptador(this, listaCompleta);
+        adaptador = new Adaptador(this, listaMostrada);
         lstvTareas.setAdapter(adaptador);
         lstvTareas.setEmptyView(txtvVacio);
 
@@ -75,56 +74,22 @@ public class MainActivity extends AppCompatActivity {
 
         // Configurar el diálogo para mostrar todos los datos de una tarea.
         lstvTareas.setOnItemClickListener((parent, view, indice, id) ->
-                mostrarInformacion(listaCompleta.get(indice)));
+                mostrarInformacion(listaMostrada.get(indice)));
 
         // Configurar el canal de notificaciones.
         notificador = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         crearCanalNotificacion();
 
     }
-    // ----------MÉTODOS PARA GESTIÓN DE PERMISOS Y NOTIFICACIONES ------
 
-    /* Método que lanza una notificación de recordatorio de tarea. */
-    private void enviarRecordatorio(Tarea tarea) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                tareaSeleccionada = tarea;
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_NOTIFICATION_PERMISSION);
-                return;
-            }
-        }
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_notificacion)
-                .setContentTitle(tarea.getTitulo())
-                .setContentText(tarea.getFecha() + " " + tarea.getHora())
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-
-        notificador.notify(tarea.getTitulo().hashCode(), builder.build());
-    }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] results) {
-        super.onRequestPermissionsResult(requestCode, permissions, results);
-        if (requestCode == REQUEST_NOTIFICATION_PERMISSION && results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED && tareaSeleccionada != null) {
-            enviarRecordatorio(tareaSeleccionada);
-        }
+    protected void onResume() {
+        super.onResume();
+        mostrarTareas();
     }
 
-    private void crearCanalNotificacion() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel canal = new NotificationChannel(CHANNEL_ID, DESCRIPCION, NotificationManager.IMPORTANCE_HIGH);
-            canal.enableLights(true);
-            canal.enableVibration(true);
-            notificador.createNotificationChannel(canal);
-        }
-    }
+
 
     // ------------- MENÚ DE OPCIONES ---------------
     @Override
@@ -157,16 +122,16 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.estudios) {
-            mostrarConteo("Estudios");
+            mostrarConteo(Coleccion.Categorias.Estudios.toString());
 
         } else if (id == R.id.trabajo) {
-            mostrarConteo("Trabajo");
+            mostrarConteo(Coleccion.Categorias.Trabajo.toString());
 
         } else if (id == R.id.personal) {
-            mostrarConteo("Personal");
+            mostrarConteo(Coleccion.Categorias.Personal.toString());
 
         } else if (id == R.id.otros) {
-            mostrarConteo("Otros");
+            mostrarConteo(Coleccion.Categorias.Otros.toString());
 
         } else if (id == R.id.opc_vaciar) {
             confirmarVaciarAgenda();
@@ -228,7 +193,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // ----------------MÉTODOS PARA GESTIÓN DE TAREAS EN EL LISTVIEW -------------
+    // ----------------MÉTODOS PARA GESTIÓN DE TAREAS DEL LISTVIEW -------------
+
+    /* Método que carga la lista de tareas según su filtro. */
+    private void mostrarTareas() {
+        listaMostrada.clear();
+        listaMostrada.addAll(Coleccion.getListaCompleta());
+        adaptador.notifyDataSetChanged();
+        txtvTotal.setText("Total: " + listaMostrada.size());
+    }
+
     /* Método que crear un alertDialog para mostrar toda la información de una tarea. */
     private void mostrarInformacion(Tarea tarea) {
         String informacion = "Categoría: " + tarea.getCategoria() + "\n"
@@ -257,21 +231,50 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    /* Método que carga la lista de tareas según su filtro. */
-    private void mostrarTareas() {
-        listaCompleta.clear();
-        listaCompleta.addAll(Coleccion.getListaCompleta());
-        adaptador.notifyDataSetChanged();
-        txtvTotal.setText("Total: " + listaCompleta.size());
+
+    // ----------MÉTODOS PARA GESTIÓN DE PERMISOS Y NOTIFICACIONES ------
+
+    /* Método que lanza una notificación de recordatorio de tarea. */
+    private void enviarRecordatorio(Tarea tarea) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                tareaSeleccionada = tarea;
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_NOTIFICATION_PERMISSION);
+                return;
+            }
+        }
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notificacion)
+                .setContentTitle(tarea.getTitulo())
+                .setContentText(tarea.getFecha() + " " + tarea.getHora())
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        notificador.notify(tarea.getTitulo().hashCode(), builder.build());
     }
 
-    // --------------
     @Override
-    protected void onResume() {
-        super.onResume();
-        listaCompleta.clear();
-        listaCompleta.addAll(Coleccion.getListaCompleta());
-        adaptador.notifyDataSetChanged();
-        txtvTotal.setText("Total: " + listaCompleta.size());
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] results) {
+        super.onRequestPermissionsResult(requestCode, permissions, results);
+        if (requestCode == REQUEST_NOTIFICATION_PERMISSION && results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED && tareaSeleccionada != null) {
+            enviarRecordatorio(tareaSeleccionada);
+        }
     }
+
+    private void crearCanalNotificacion() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel canal = new NotificationChannel(CHANNEL_ID, DESCRIPCION, NotificationManager.IMPORTANCE_HIGH);
+            canal.enableLights(true);
+            canal.enableVibration(true);
+            notificador.createNotificationChannel(canal);
+        }
+    }
+
+
 }

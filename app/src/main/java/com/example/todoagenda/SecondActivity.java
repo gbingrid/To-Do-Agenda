@@ -39,7 +39,10 @@ public class SecondActivity extends AppCompatActivity {
         edtCategoria.setOnClickListener(v -> mostrarDialogoCategoria());
         edtFecha.setOnClickListener(v -> seleccionarFecha());
         edtHora.setOnClickListener(v -> seleccionarHora());
-        btnGuardar.setOnClickListener(v -> guardarTarea());
+        btnGuardar.setOnClickListener(v -> {
+            guardarTarea();
+            finish();
+        });
         btnCancelar.setOnClickListener(v -> finish());
 
         // Configuración del botón para volver a la pantalla anterior.
@@ -54,7 +57,7 @@ public class SecondActivity extends AppCompatActivity {
         String hora = edtHora.getText().toString().trim();
 
         if (titulo.isEmpty() || categoria.isEmpty() || fecha.isEmpty() || hora.isEmpty()){
-            Toast.makeText(this, "Hay campos obligatorios vacíos.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debe rellenar todos los campos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
