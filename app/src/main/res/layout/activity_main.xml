@@ -18,18 +18,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
-        <Button
-            android:id="@+id/btn_logo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="12dp"
-            android:background="@color/transparent"
-            app:icon="@drawable/ic_logotodo"
-            app:iconGravity="textStart"
-            app:iconSize="48dp"
-            app:iconPadding="0dp" />
+        <LinearLayout
+            android:id="@+id/lyt_contenedor_logo_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/btn_logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@color/transparent"
+                android:layout_gravity="start"
+                android:src="@drawable/ic_logotodo"
+                />
+
+            <TextView
+                android:id="@+id/txt_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@string/txt_app_name"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+            </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/txt_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/txt_titulo_total"
+        android:textColor="@color/dark_grey"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/tlb_contenedor_encabezado"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/lyt_contenedor_lista"
@@ -42,10 +70,17 @@
         android:padding="8dp"
         android:orientation="vertical"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/tlb_contenedor_encabezado"
+        app:layout_constraintTop_toBottomOf="@id/txt_total"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
+
+        <TextView
+            android:id="@+id/txt_lista_vacia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_agenda_vacia"
+            android:textAlignment="center" />
 
         <ListView
             android:id="@+id/lstv_tareas"

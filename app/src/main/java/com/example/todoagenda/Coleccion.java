@@ -5,8 +5,8 @@ import java.util.ArrayList;
 /* Clase para almacenar y gestionar las tareas registradas. */
 public class Coleccion {
     private static final ArrayList<Tarea> listaCompleta = new ArrayList<>();
-
-    private static final String[] CATEGORIAS = {"Estudios", "Trabajo", "Personal", "Otros"};
+    public enum Categorias {Estudios, Trabajo, Personal, Otros};
+    public static boolean porDefectoCargadas = false;
 
     // Método que agrega todas las tareas a la lista.
     public static void agregarTarea(Tarea tarea){
@@ -19,7 +19,7 @@ public class Coleccion {
     }
 
     // Método que permite filtrar las tareas por categoría.
-    public static ArrayList<Tarea> filtrarLista(String categoria){
+    public static ArrayList<Tarea> getListaFiltrada(String categoria){
         ArrayList<Tarea> listaFiltrada = new ArrayList<>();
 
         for(Tarea t: listaCompleta){
@@ -33,8 +33,13 @@ public class Coleccion {
 
     // Método que se ejecuta una sola vez para añadir tareas predeterminadas.
     public static void agregarTareasPorDefecto(){
-        listaCompleta.add(new Tarea("Realizar proyecto final", "", "Estudio", "12/12/2026", "14:00"));
-        listaCompleta.add(new Tarea("Preparar presentación", "Diseñar las diapositivas", "Trabajo", "14/12/2026", "10:00"));
+        if (!porDefectoCargadas) {
+            return;
+        }
+
+        listaCompleta.add(new Tarea("Realizar proyecto final", Categorias.Estudios.toString(), "12/12/2026", "14:00"));
+        listaCompleta.add(new Tarea("Preparar presentación", Categorias.Trabajo.toString(), "14/12/2026", "10:00"));
+        porDefectoCargadas = true;
     }
 
     /* Método para eliminar tarea registrada. */

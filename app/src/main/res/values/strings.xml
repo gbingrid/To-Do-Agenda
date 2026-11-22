@@ -16,6 +16,8 @@
     <string name="txt_titulo_fecha">Fecha *</string>
     <string name="txt_titulo_hora">Hora *</string>
     <string name="txt_guardar">Guardar</string>
+    <string name="txt_titulo_total">Total (0)</string>
+    <string name="txt_agenda_vacia">Agenda vacía</string>
     <string-array name="categorias">
         <item>Estudio</item>
         <item>Trabajo</item>
