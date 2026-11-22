@@ -93,14 +93,18 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
-        <Spinner
+        <EditText
             android:id="@+id/etxt_categoria"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="15dp"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:hint="Selecciona la categoría"
+            android:textSize="20sp"
+            android:inputType="none"
+            android:focusable="false"/>
 
 
         <TextView
@@ -125,7 +129,9 @@
             android:layout_marginBottom="15dp"
             android:background="@color/white"
             android:hint="@string/etxt_fecha"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="none"
+            android:focusable="false" />
 
 
         <TextView
@@ -149,33 +155,37 @@
             android:layout_marginEnd="25dp"
             android:background="@color/white"
             android:hint="@string/etxt_hora"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="none"
+            android:focusable="false" />
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
 
     <Button
         android:id="@+id/btn_guardar"
         android:layout_width="110dp"
         android:layout_height="45dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="15dp"
         android:backgroundTint="@color/navy_blue"
         android:text="@string/txt_guardar"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btn_cancelar"
         android:layout_width="110dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/navy_blue"
         android:text="@string/txt_btn_cancelar"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textColor="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
